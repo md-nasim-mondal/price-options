@@ -14,7 +14,7 @@ const NavBar = () => {
 
 
     return (
-      <nav>
+      <nav className="text-black bg-yellow-200 p-6">
         <div onClick={() => setOpen(!open)} className="md:hidden">
           {open === true ? (
             <IoMdClose className="text-3xl" />
@@ -22,7 +22,12 @@ const NavBar = () => {
             <IoMenuOutline className="text-3xl"></IoMenuOutline>
           )}
         </div>
-        <ul className="md:flex">
+        {/* ${open ? '' : 'hidden'} == we can also use it in class name for hidden the menu and show the menu */}
+        <ul
+          className={`md:flex absolute md:static
+            ${open ? "top-20" : "-top-64"}
+         bg-yellow-100 md:bg-yellow-200 px-6`}
+        >
           {dataRoutes.map((route) => (
             <Link key={route.id} route={route}></Link>
           ))}
